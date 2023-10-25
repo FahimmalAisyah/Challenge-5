@@ -1,0 +1,38 @@
+GET http://localhost:3000
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2OTgxNDg4ODUsImV4cCI6MTcyOTcwNjQ4NSwiYXVkIjoiNjUzMzgyMGRiMDdhNDM2NDU5ZDcxOGE5In0.6xKkAr86moFWWcixsb6kIzv2cGpRRjf2JF0yC0HxEfA
+
+###login Route
+POST http://localhost:3000/auth/login
+Content-Type: application/json
+
+{
+    "email" : "superadmin@gmail.com",
+    "password": "sipalingsuper"
+}
+
+###register Route
+POST http://localhost:3000/auth/register
+Content-Type: application/json
+
+{
+    "email" : "superadmin@gmail.com",
+    "password": "sipalingsuper"
+}
+
+###refresh-token route
+POST http://localhost:3000/auth/refresh-token
+Content-Type: application/json
+
+{
+    "refreshToken" : "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2OTc5NjQ1MTAsImV4cCI6MTcyOTUyMjExMCwiYXVkIjoiNjUzMzgyMGRiMDdhNDM2NDU5ZDcxOGE5In0.yYGOzxwwuFNqaA_0xNobZ92ISIbaA3HR8g9KnY4Plds"
+}
+
+
+
+###logout route
+DELETE http://localhost:3000/auth/logout
+Content-Type: application/json
+
+{
+    "refreshToken" : 
+}
