@@ -2,14 +2,13 @@ require('dotenv').config('.env');
 require('./helpers/init_mongodb');
 
 const express = require('express');
-const expressLayout = require('express-ejs-layouts');
 const morgan = require('morgan');
-const createError = require('http-errors');
 const {verifyAccessToken} = require('./helpers/jwt_helper')
 const connectDB = require('./server/config/db')
 const swaggerjsdoc = require('swagger-jsdoc')
 const swaggerUI = require('swagger-ui-express')
 const AuthRoute = require('./server/Routes/Auth.route');
+const productRoute = require('./server/Routes/productRouter')
 
 
 const app  = express();
@@ -20,38 +19,30 @@ app.use(express.urlencoded({extended :true}))
 
 app.use(express.static('public'))
 
-// app.use(expressLayout)
-// app.set('layout', './layouts/main')
-// app.set('view engine', 'ejs')
-
 //HomePage
-app.get('/' ,verifyAccessToken,require('./server/Routes/admin.route'));
 
-//admin form
-// app.post('/add', require('./server/Routes/admin.route'))
 
-//ifError
-// app.get('*', (req, res)=>{
-//     res.status(404).render('404')
-// })
+
+app.get('/' , require('./server/Routes/admin.route'));
+
 
 
 app.use('/auth', AuthRoute)
-
+app.use('/car', productRoute)
 
 
 const options = {
     definition:{
         openapi: "3.0.3",
         info:{
-            title:" chapter 5",
+            title:"Fahimmal chapter 5",
             description:"Tugas API CH5"
         },
         servers:[
             {url: "http://localhost:3000",},
         ],
     },
-    apis : ["./server/Routes/Auth.route.js"]
+    apis : ["./server/Routes/Auth.route.js", "./server/Routes/productRouter.js"]
 }
 
 const spacs = swaggerjsdoc(options)
