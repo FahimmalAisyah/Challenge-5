@@ -44,7 +44,7 @@ const options = {
     definition:{
         openapi: "3.0.3",
         info:{
-            title:"Fahimmal chapter 5",
+            title:" chapter 5",
             description:"Tugas API CH5"
         },
         servers:[
